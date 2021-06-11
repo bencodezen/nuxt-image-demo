@@ -24,6 +24,7 @@ export default {
 
   // Image
   image: {
+    provider: "netlify",
     domains: ["https://images.unsplash.com"]
   },
 
