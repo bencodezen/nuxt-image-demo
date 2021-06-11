@@ -1,6 +1,18 @@
 <template>
   <div class="container">
+    <h1>Nuxt Image Demo</h1>
+    <h2>Image Selection</h2>
+    <nuxt-img :src="selectedImage" sizes="xl:75vw lg:50vw" alt="" />
     <div>
+      <select name="select-images" id="select-images" v-model="selectedImage">
+        <option value="">Default</option>
+        <option
+          v-for="image in imageList"
+          :key="image.label"
+          :value="image.url"
+          >{{ image.label }}</option
+        >
+      </select>
       <nuxt-img src="/unsplash.jpg" sizes="xl:100vw lg:75vw" alt="" />
       <p>
         Photo by
@@ -21,17 +33,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data: () => ({
+    imageList: [
+      {
+        label: "Ocean",
+        url:
+          "https://images.unsplash.com/photo-1601649705707-13b54dc57b87?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1426&q=80"
+      },
+      {
+        label: "Mountain Top",
+        url:
+          "https://images.unsplash.com/photo-1604051189201-700f955d1cf8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+      },
+      {
+        label: "Comet",
+        url:
+          "https://images.unsplash.com/photo-1623284577359-a0130bb9a86d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80"
+      }
+    ],
+    selectedImage: ""
+  })
+};
 </script>
 
 <style>
 .container {
   margin: 0 auto;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .title {
